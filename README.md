@@ -18,3 +18,10 @@ Description
    1. add data.js
    2. add images
    3. render products
+7. Create Product Details
+   1. Create product page
+   2. Create 3 columns
+   3. show image in the first column
+   4. show product info in the second column
+   5. show add to cart in third column
+   6. add style
