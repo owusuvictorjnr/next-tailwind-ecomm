@@ -14,11 +14,11 @@ function Layout({ title, children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex min-h-screen flex-col justify-between">
+      <div className="flex min-h-screen flex-col justify-between bg-white text-black">
         <header>
           <nav className="flex h-12 justify-between items-center px-4 shadow-md">
             <Link href="/">
-              <a className="text-lg font-bold">vidan`s fshion</a>
+              <a className="text-lg font-bold">vidan`s fashion</a>
             </Link>
             <div className="">
               <Link href="/cart">
