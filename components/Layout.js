@@ -1,15 +1,19 @@
 // The component Layout is a wrapper for all the pages
 
-import React from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
+import React, { useContext } from "react";
+import Head from "next/head";
+import Link from "next/link";
+import { Store } from "../utils/Store";
 
 function Layout({ title, children }) {
+  const { state, dispatch } = useContext(Store);
+  const { cart } = state;
+
   return (
-    // I'm using html components here
+    // html components
     <>
       <Head>
-        <title>{title ? title + '-Vidan`s Fashion' : 'Vidan`s Fashion'}</title>
+        <title>{title ? title + "-Vidan`s Fashion" : "Vidan`s Fashion"}</title>
         <meta name="description" content="Ecommerce Website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -22,7 +26,15 @@ function Layout({ title, children }) {
             </Link>
             <div className="">
               <Link href="/cart">
-                <a className="p-2">Cart</a>
+                <a className="p-2">
+                  Cart
+                  {cart.cartItems.length > 0 && (
+                    <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
+                      {/* Accumulator of all the sum quantities */}
+                      {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                    </span>
+                  )}
+                </a>
               </Link>
               <Link href="/login">
                 <a className="p-2">Login</a>
