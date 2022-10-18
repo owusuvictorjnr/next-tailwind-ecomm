@@ -6,7 +6,7 @@ const ProductItem = ({ product }) => {
     // Product thumpnail
     <div className="card">
       <Link href={`/product/${product.slug}`}>
-        <a className="">
+        <a>
           <img
             src={product.image}
             alt={product.name}
