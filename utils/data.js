@@ -27,7 +27,7 @@ const data = {
     },
 
     {
-      name: "kids Set",
+      name: "kids Set2",
       slug: "kids Set",
       category: "Kids ware",
       image: "/images/kids2.jpg",
@@ -67,7 +67,7 @@ const data = {
 
     {
       name: " Set2",
-      slug: "Gents Set",
+      slug: "Gents Ware",
       category: "Gents ware",
       image: "/images/set2.jpg",
       price: "100",
