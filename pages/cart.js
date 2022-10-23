@@ -5,6 +5,7 @@ import { XCircleIcon } from "@heroicons/react/outline";
 import Layout from "../components/Layout";
 import { Store } from "../utils/Store";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 
 const CartScreen = () => {
   const router = useRouter();
@@ -71,7 +72,7 @@ const CartScreen = () => {
                             {x + 1}{" "}
                           </option>
                         ))}
-                      </select> 
+                      </select>
                     </td>
                     <td className="p-5 text-right">&#8373; {item.price}</td>
                     <td className="p-5 text-center">
@@ -110,4 +111,4 @@ const CartScreen = () => {
   );
 };
 
-export default CartScreen;
+export default dynamic(() => Promise.resolve(CartScreen), { ssr: false });
