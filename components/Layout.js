@@ -19,7 +19,7 @@ function Layout({ title, children }) {
       <Head>
         <title>{title ? title + "-Vidan`s Fashion" : "Vidan`s Fashion"}</title>
         <meta name="description" content="Ecommerce Website" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.icon" />
       </Head>
 
       <div className="flex min-h-screen flex-col justify-between bg-white text-black">
