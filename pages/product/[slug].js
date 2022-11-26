@@ -1,10 +1,10 @@
-import Image from "next/image";
-import Link from "next/link";
-import Router, { useRouter } from "next/router";
-import React, { useContext, useEffect } from "react";
-import Layout from "../../components/Layout";
-import data from "../../utils/data";
-import { Store } from "../../utils/Store";
+import Image from 'next/image';
+import Link from 'next/link';
+import Router, { useRouter } from 'next/router';
+import React, { useContext, useEffect } from 'react';
+import Layout from '../../components/Layout';
+import data from '../../utils/data';
+import { Store } from '../../utils/Store';
 
 const ProductScreen = () => {
   const { state, dispatch } = useContext(Store);
@@ -22,12 +22,12 @@ const ProductScreen = () => {
     const quantity = existItem ? existItem.quantity + 1 : 1;
 
     if (product.countInStock < quantity) {
-      alert("Sorry, Product is out of stock");
+      alert('Sorry, Product is out of stock');
       return;
     }
 
-    dispatch({ type: "CART_ADD_ITEMS", payload: { ...product, quantity } });
-    router.push("/cart");
+    dispatch({ type: 'CART_ADD_ITEMS', payload: { ...product, quantity } });
+    router.push('/cart');
   };
 
   return (
@@ -66,7 +66,7 @@ const ProductScreen = () => {
           </div>
           <div className="mb-2 flex justify-between">
             <div>Status</div>
-            <div>{product.countInStock > 0 ? "In stock" : "Unavailable"}</div>
+            <div>{product.countInStock > 0 ? 'In stock' : 'Unavailable'}</div>
           </div>
           <button className="primary-button w-full" onClick={addToCartHandler}>
             Add to cart
