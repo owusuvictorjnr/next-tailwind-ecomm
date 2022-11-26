@@ -1,11 +1,11 @@
-import Image from "next/image";
-import Link from "next/link";
-import React, { useContext } from "react";
-import { XCircleIcon } from "@heroicons/react/outline";
-import Layout from "../components/Layout";
-import { Store } from "../utils/Store";
-import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
+import Image from 'next/image';
+import Link from 'next/link';
+import React, { useContext } from 'react';
+import { XCircleIcon } from '@heroicons/react/outline';
+import Layout from '../components/Layout';
+import { Store } from '../utils/Store';
+import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 
 const CartScreen = () => {
   const router = useRouter();
@@ -15,13 +15,13 @@ const CartScreen = () => {
   } = state;
 
   const removeItemHandler = (item) => {
-    dispatch({ type: "CART_REMOVE_ITEM", payload: item });
+    dispatch({ type: 'CART_REMOVE_ITEM', payload: item });
   };
 
   const updateCartHandler = (item, qty) => {
     const quantity = Number(qty);
 
-    dispatch({ type: "CART_ADD_ITEMS", payload: { ...item, quantity } });
+    dispatch({ type: 'CART_ADD_ITEMS', payload: { ...item, quantity } });
   };
 
   return (
@@ -69,7 +69,7 @@ const CartScreen = () => {
                       >
                         {[...Array(item.countInStock).keys()].map((x) => (
                           <option key={x + 1} value={x + 1}>
-                            {x + 1}{" "}
+                            {x + 1}{' '}
                           </option>
                         ))}
                       </select>
@@ -97,7 +97,7 @@ const CartScreen = () => {
 
               <li>
                 <button
-                  onClick={() => router.push("login?redirect=/shipping")}
+                  onClick={() => router.push('login?redirect=/shipping')}
                   className="primary-button w-full"
                 >
                   Check Out
