@@ -1,13 +1,18 @@
 // The component Layout is a wrapper for all the pages
 
-import React, { useContext, useEffect, useState } from "react";
-import Head from "next/head";
-import Link from "next/link";
-import { Store } from "../utils/Store";
+import React, { useContext, useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
+import Head from 'next/head';
+import Link from 'next/link';
+import { Store } from '../utils/Store';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Layout({ title, children }) {
+  const { status, data: session } = useSession();
+
   const { state, dispatch } = useContext(Store);
-  const { cart } = state;  
+  const { cart } = state;
   const [cartItemsCount, setCartItemsCount] = useState(0);
   useEffect(() => {
     setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
@@ -17,10 +22,12 @@ function Layout({ title, children }) {
     // html components
     <>
       <Head>
-        <title>{title ? title + "-Vidan`s Fashion" : "Vidan`s Fashion"}</title>
+        <title>{title ? title + '-Vidan`s Fashion' : 'Vidan`s Fashion'}</title>
         <meta name="description" content="Ecommerce Website" />
         <link rel="icon" href="/favicon.icon" />
       </Head>
+
+      <ToastContainer position="bottom-center" limit={1} />
 
       <div className="flex min-h-screen flex-col justify-between bg-white text-black">
         <header>
@@ -40,9 +47,16 @@ function Layout({ title, children }) {
                   )}
                 </a>
               </Link>
-              <Link href="/login">
-                <a className="p-2">Login</a>
-              </Link>
+
+              {status === 'loading' ? (
+                'Loading...'
+              ) : session?.user ? (
+                session.user.name
+              ) : (
+                <Link href="/login">
+                  <a className="p-2 ">Login</a>
+                </Link>
+              )}
             </div>
           </nav>
         </header>
